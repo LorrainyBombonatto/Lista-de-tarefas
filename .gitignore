@@ -1,18 +1,33 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+ tasks = []
 
-# Other files and folders
-.settings/
+def add_task(task):
+    tasks.append(task)
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+def remove_task(task):
+    if task in tasks:
+        tasks.remove(task)
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+def show_tasks():
+    print("Lista de Tarefas:")
+    for task in tasks:
+        print(f"- {task}")
+
+while True:
+    print("\n1. Adicionar Tarefa")
+    print("\n2. Remover Tarefa")
+    print("\n3. Mostrar Tarefas")
+    print("\n4. Sair")
+    choice = input("Escolha uma opção: ")
+
+    if choice == "1":
+        task = input("Digite a tarefa: ")
+        add_task(task)
+    elif choice == "2":
+        task = input("Digite a tarefa a ser removida: ")
+        remove_task(task)
+    elif choice == "3":
+        show_tasks()
+    elif choice == "4":
+        break
+    else:
+        print("Opção inválida. Tente novamente.")
